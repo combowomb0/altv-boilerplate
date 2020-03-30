@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["resources/main/src/alt.d.ts"],
+    "lib": ["es5", "es6", "esnext"],
+		"module": "esnext",
+		"moduleResolution": "node",
+    "target": "esnext"
+  },
+  "include": [
+    "resources/main/src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

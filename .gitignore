@@ -1,0 +1,12 @@
+/cache
+/crashdumps
+/data
+/modules
+node_modules
+resources/main/client
+resources/main/server
+altv-server.exe
+libnode.dll
+server.cfg
+server.log
+.eslintcache

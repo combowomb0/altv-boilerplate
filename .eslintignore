@@ -1,0 +1,9 @@
+# Ignore rollup config
+rollup.config.js
+
+# Ignore node modules
+/node_modules/*
+
+# Ignore builded files
+/resources/main/client/*
+/resources/main/server/*
