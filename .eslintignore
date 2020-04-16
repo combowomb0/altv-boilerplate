@@ -1,8 +1,11 @@
 # Ignore rollup config
 rollup.config.js
 
+# Ignore webpack config
+webpack.config.js
+
 # Ignore node modules
-/node_modules/*
+node_modules
 
 # Ignore builded files
 /resources/main/client/*

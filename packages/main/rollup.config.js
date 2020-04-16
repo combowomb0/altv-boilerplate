@@ -4,8 +4,10 @@ import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import builtins from 'rollup-plugin-node-builtins';
 import { terser } from 'rollup-plugin-terser';
+import json from '@rollup/plugin-json';
 
-const resourceDir = path.resolve(process.cwd(), 'resources/main');
+const rootDir = path.resolve(process.cwd(), '..', '..');
+const resourceDir = path.resolve(rootDir, 'resources', 'main');
 
 const getOutputFile = dir => {
   const extension = dir === 'server' ? '.mjs' : '.js';
@@ -20,19 +22,20 @@ const getPlugins = () => {
     eslint({
       throwOnError: true,
       throwOnWarning: !isWatchMode,
-      include: path.resolve(resourceDir, 'src/**/*')
+      include: './src/**/*'
     }),
     typescript({
-      tsconfig: path.resolve(process.cwd(), 'tsconfig.json')
+      tsconfig: 'tsconfig.json'
     }),
     resolve({ preferBuiltins: true }),
     builtins(),
+    json(),
     !isWatchMode && terser()
   ];
 };
 
 export default ['client', 'server'].map(dir => ({
-  input: path.resolve(resourceDir, 'src', dir, 'index.ts'),
+  input: path.resolve('src', dir, 'index.ts'),
   output: {
     name: dir,
     file: getOutputFile(dir)

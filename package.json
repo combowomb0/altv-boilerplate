@@ -1,28 +1,21 @@
 {
-  "name": "altv-boilerplate",
+  "name": "boilerplate",
   "version": "0.0.1",
   "author": "combowomb0",
   "license": "MIT",
-  "scripts": {
-    "build": "rollup -c",
-    "watch": "rollup -cw",
-    "lint": "eslint --cache --ext .ts resources/main/src"
-  },
-  "dependencies": {
-    "typescript": "^3.8.3"
-  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@altv/native-types": "^1.0.3",
     "@altv/types": "^1.0.15",
-    "@rollup/plugin-node-resolve": "^7.1.1",
     "@types/node": "^13.9.0",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
     "eslint": "^6.8.0",
-    "rollup": "^2.0.3",
-    "rollup-plugin-eslint": "^7.0.0",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-terser": "^5.3.0",
-    "rollup-plugin-typescript2": "^0.26.0"
+    "eslint-plugin-css-modules": "^2.11.0",
+    "lerna": "^3.20.2",
+    "typescript": "^3.8.3"
   }
 }

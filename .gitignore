@@ -10,3 +10,4 @@ libnode.dll
 server.cfg
 server.log
 .eslintcache
+lerna-debug.log

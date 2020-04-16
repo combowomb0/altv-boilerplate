@@ -11,19 +11,25 @@ module.exports = {
   ],
   plugins: [
     '@typescript-eslint',
+    'css-modules',
   ],
   overrides: [
     {
-      files: ["*.d.ts"],
+      files: ['*.d.ts'],
       rules: {
         'spaced-comment': 'off'
+      }
+    },
+    {
+      files: ['packages/view/**/*'],
+      env: {
+        es6: true,
+        browser: true
       }
     }
   ],
   parserOptions: {
-    project: path.resolve(process.cwd(), './tsconfig.json'),
-    tsconfigRootDir: process.cwd(),
-    ecmaVersion: 2020,
+    project: ["tsconfig.json"],
     sourceType: 'module',
   },
   rules: {
