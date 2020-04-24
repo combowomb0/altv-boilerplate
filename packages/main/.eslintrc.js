@@ -1,35 +1,22 @@
-const path = require('path');
-
 module.exports = {
   parser: '@typescript-eslint/parser',
   env: {
 		'es6': true,
 	},
   extends: [
-    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:promise/recommended'
   ],
   plugins: [
     '@typescript-eslint',
-    'css-modules',
-  ],
-  overrides: [
-    {
-      files: ['*.d.ts'],
-      rules: {
-        'spaced-comment': 'off'
-      }
-    },
-    {
-      files: ['packages/view/**/*'],
-      env: {
-        es6: true,
-        browser: true
-      }
-    }
+    'promise'
   ],
   parserOptions: {
-    project: ["tsconfig.json"],
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
+    ecmaVersion:  2020,
     sourceType: 'module',
   },
   rules: {
@@ -50,11 +37,9 @@ module.exports = {
     'brace-style': 'error',
     'camelcase': 'error',
     'comma-dangle': 'error',
-    'comma-spacing': 'error',
     'comma-style': 'error',
     'computed-property-spacing': 'error',
     'eol-last': 'error',
-    'func-call-spacing': 'error',
     'implicit-arrow-linebreak': 'error',
     'keyword-spacing': 'error',
     'line-comment-position': 'error',
@@ -85,6 +70,24 @@ module.exports = {
     '@typescript-eslint/prefer-as-const': 'error',
     '@typescript-eslint/prefer-readonly': 'error',
     '@typescript-eslint/promise-function-async': 'error',
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        'selector': 'enum',
+        'format': ['PascalCase'],
+        'prefix': ['E']
+      },
+      {
+        'selector': 'interface',
+        'format': ['PascalCase'],
+        'prefix': ['I']
+      },
+      {
+        'selector': 'typeAlias',
+        'format': ['PascalCase'],
+        'prefix': ['T']
+      }
+    ],
 
     // typescript-eslint extension rules
     'comma-spacing': 'off',

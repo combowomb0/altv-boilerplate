@@ -1,3 +1,13 @@
 {
-  "extends": "../../tsconfig.json"
+  "compilerOptions": {
+    "typeRoots": ["typings/**/*.d.ts", "../node_modules/@types"],
+    "lib": ["es5", "es6", "esnext"],
+		"module": "esnext",
+		"moduleResolution": "node",
+    "target": "esnext"
+  },
+  "include": [
+    "src",
+    "typings"
+  ]
 }
