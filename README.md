@@ -1,5 +1,7 @@
 # alt:V boilerplate with TypeScript and React
-Please refer to the [Lerna](https://github.com/lerna/lerna) for documentation
+> ⚠️ Please refer to the [Lerna](https://github.com/lerna/lerna) for documentation
+
+---
 
 ## Quick start
 1. Clone repository

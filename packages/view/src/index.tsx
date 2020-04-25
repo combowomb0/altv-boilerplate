@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { emit } from 'alt-client';
 import styles from './index.scss';
+
+import { emit } from 'alt-client';
 
 window.addEventListener('load', () => {
   emit('view:loaded');
