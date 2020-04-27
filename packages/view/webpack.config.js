@@ -19,7 +19,8 @@ module.exports = {
   },
   output: {
     path: outputPath,
-    filename: 'main.[contenthash:5].js'
+    filename: '[name].[contenthash:8].js',
+    chunkFilename: '[name].[contenthash:8].chunk.js'
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx']
@@ -42,16 +43,23 @@ module.exports = {
         ].filter(Boolean)
       },
       {
-        test:/\.(s*)css$/,
+        test: /\.css$/,
+        include: /node_modules/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
+          { loader: MiniCssExtractPlugin.loader },
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.(scss|sass)$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
           {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[name]__[local]___[hash:base64:5]'
+                localIdentName: '[name]__[local]___[hash:base64:8]'
               }
             },
           },
@@ -67,14 +75,14 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 8192,
-          name: '[name].[contenthash:5].[ext]'
+          name: '[name].[contenthash:8].[ext]'
         }
       },
       {
-        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        exclude: [/\.(js|mjs|jsx|ts|tsx|css|sass|scss)$/, /\.html$/, /\.json$/],
         loader: 'file-loader',
         options: {
-          name: '[name].[contenthash:5].[ext]'
+          name: '[name].[contenthash:8].[ext]'
         }
       }
     ]
@@ -83,19 +91,17 @@ module.exports = {
     minimize: true,
     minimizer: [new TerserPlugin()],
     splitChunks: {
-      cacheGroups: {
-        vendors: {
-          test: /node_modules/,
-          chunks: 'all',
-          filename: 'vendor.[contenthash:5].js'
-        }
-      }
-    },
+      chunks: 'all',
+      name: false,
+    }
   },
   plugins: [
     new AltVPlugin(),
     new webpack.EnvironmentPlugin({ 'process.env.NODE_ENV': isProduction ? 'production' : 'development' }),
-    new MiniCssExtractPlugin({ filename: 'main.[contenthash:5].css' }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash:8].css',
+      chunkFilename: '[name].[contenthash:8].chunk.css',
+    }),
     new HtmlPlugin({ template: path.resolve(process.cwd(), 'public', 'index.html') }),
     new CleanWebpackPlugin()
   ]

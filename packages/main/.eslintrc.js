@@ -99,7 +99,7 @@ module.exports = {
     'no-dupe-class-members': 'off',
     '@typescript-eslint/no-dupe-class-members': 'error',
     'no-extra-parens': 'off',
-    '@typescript-eslint/no-extra-parens': 'error',
+    'no-extra-parens': [ 'error', 'all', { "ignoreJSX": 'multi-line' } ],
     'no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-expressions': 'error',
     'quotes': 'off',
