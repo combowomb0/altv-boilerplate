@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 
 const HtmlPlugin = require('html-webpack-plugin');
@@ -97,7 +96,6 @@ module.exports = {
   },
   plugins: [
     new AltVPlugin(),
-    new webpack.EnvironmentPlugin({ 'process.env.NODE_ENV': isProduction ? 'production' : 'development' }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash:8].css',
       chunkFilename: '[name].[contenthash:8].chunk.css',

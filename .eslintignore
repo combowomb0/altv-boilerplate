@@ -10,3 +10,9 @@ node_modules
 # Ignore builded files
 /resources/main/client/*
 /resources/main/server/*
+
+# Ignore .d.ts files
+*.d.ts
+
+# Ignore mocks
+__mocks__

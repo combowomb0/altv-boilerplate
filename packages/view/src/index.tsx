@@ -8,6 +8,6 @@ window.addEventListener('load', () => {
   emit('view:loaded');
 });
 
-const App: React.FC = () => <h1 className={styles['title']}>boilerplate</h1>;
+export const App: React.FC = () => <h1 className={styles['title']}>boilerplate</h1>;
 
 render(<App />, document.getElementById('root'));
