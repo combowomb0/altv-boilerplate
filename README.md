@@ -18,3 +18,4 @@
 - `lerna run view:start` - watch webView files
 - `lerna run build` - build client, server and webView files
 - `lerna run lint` - ESLint
+- `lerna run storybook` - Storybook
