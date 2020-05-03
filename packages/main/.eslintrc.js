@@ -29,7 +29,6 @@ module.exports = {
     'no-proto': 'error',
     'no-void': 'error',
     'radix': 'error',
-    'arrow-body-style': 'error',
     'no-duplicate-imports': 'error',
     'array-bracket-newline': 'error',
     'array-bracket-spacing': 'error',
@@ -53,6 +52,8 @@ module.exports = {
     'semi-style': 'error',
 
     // typescript-eslint
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/ban-ts-comment': 'error',
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/explicit-member-accessibility': 'error',
@@ -65,7 +66,6 @@ module.exports = {
     '@typescript-eslint/no-parameter-properties': 'error',
     '@typescript-eslint/no-require-imports': 'error',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
-    '@typescript-eslint/no-unnecessary-condition': 'error',
     '@typescript-eslint/no-unnecessary-type-arguments': 'error',
     '@typescript-eslint/prefer-as-const': 'error',
     '@typescript-eslint/prefer-readonly': 'error',
