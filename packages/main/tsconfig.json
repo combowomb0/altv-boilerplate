@@ -4,7 +4,8 @@
     "lib": ["es5", "es6", "esnext"],
 		"module": "esnext",
 		"moduleResolution": "node",
-    "target": "esnext"
+    "target": "esnext",
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src",

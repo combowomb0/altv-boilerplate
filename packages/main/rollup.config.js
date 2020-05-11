@@ -16,12 +16,12 @@ const getOutputFile = dir => {
 };
 
 const getPlugins = () => {
-  const isWatchMode = process.env.ROLLUP_WATCH === 'true';
+  const isProduction = !(process.env.ROLLUP_WATCH === 'true');
 
   return [
     eslint({
       throwOnError: true,
-      throwOnWarning: !isWatchMode,
+      throwOnWarning: isProduction,
       include: './src/**/*'
     }),
     typescript({
@@ -30,7 +30,7 @@ const getPlugins = () => {
     resolve({ preferBuiltins: true }),
     builtins(),
     json(),
-    !isWatchMode && terser()
+    isProduction && terser()
   ];
 };
 
