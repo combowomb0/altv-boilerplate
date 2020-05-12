@@ -1,10 +1,12 @@
 import path from 'path';
-import { eslint } from 'rollup-plugin-eslint';
+
 import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import builtins from 'rollup-plugin-node-builtins';
-import { terser } from 'rollup-plugin-terser';
 import json from '@rollup/plugin-json';
+import autoExternal from 'rollup-plugin-auto-external';
+import { eslint } from 'rollup-plugin-eslint';
+import { terser } from 'rollup-plugin-terser';
 
 const rootDir = path.resolve(process.cwd(), '..', '..');
 const resourceDir = path.resolve(rootDir, 'resources', 'main');
@@ -15,8 +17,9 @@ const getOutputFile = dir => {
   return path.resolve(resourceDir, dir, `index${extension}`);
 };
 
-const getPlugins = () => {
+const getPlugins = dir => {
   const isProduction = !(process.env.ROLLUP_WATCH === 'true');
+  const isServerSide = dir === 'server';
 
   return [
     eslint({
@@ -27,11 +30,15 @@ const getPlugins = () => {
     typescript({
       tsconfig: 'tsconfig.json'
     }),
+    isServerSide && autoExternal({
+			builtins: false,
+			peerDependencies: false,
+		}),
     resolve({ preferBuiltins: true }),
     builtins(),
     json(),
     isProduction && terser()
-  ];
+  ].filter(Boolean);
 };
 
 export default ['client', 'server'].map(dir => ({
@@ -41,5 +48,5 @@ export default ['client', 'server'].map(dir => ({
     file: getOutputFile(dir)
   },
   external: ['alt-server', 'alt-client', 'natives'],
-  plugins: getPlugins()
+  plugins: getPlugins(dir)
 }));
