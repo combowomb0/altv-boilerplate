@@ -19,3 +19,6 @@
 - `lerna run build` - build client, server and webView files
 - `lerna run lint` - ESLint
 - `lerna run storybook` - Storybook
+
+## Node scripts
+- `yarn watch` - watch resources folder and restart server
