@@ -12,3 +12,4 @@ server.log
 .eslintcache
 lerna-debug.log
 yarn-error.log
+update.json
