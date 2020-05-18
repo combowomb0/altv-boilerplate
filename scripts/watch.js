@@ -1,5 +1,5 @@
 const path = require('path');
-const watch = require('node-watch');
+const { watch } = require('chokidar');
 const { existsSync } = require('fs');
 const { red } = require('chalk');
 const { spawn } = require('child_process');
@@ -19,7 +19,7 @@ const runServer = () => {
 
 let serverProcess = runServer();
 
-watch(resources, { recursive: true }, () => {
+watch(resources).on('all', () => {
   serverProcess.kill();
   serverProcess = runServer();
 });
