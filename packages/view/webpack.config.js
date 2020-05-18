@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const sourcePath = path.resolve(process.cwd(), 'src');
@@ -34,7 +35,12 @@ module.exports = (_, argv) => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: [
-            'ts-loader',
+            {
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true,
+              }
+            },
             {
               loader: 'eslint-loader',
               options: {
@@ -110,6 +116,9 @@ module.exports = (_, argv) => {
       },
     },
     plugins: [
+      new ForkTsCheckerPlugin({
+        async: !isProduction,
+      }),
       new MiniCssExtractPlugin({
         filename: '[name].[contenthash:8].css',
         chunkFilename: '[name].[contenthash:8].chunk.css',
