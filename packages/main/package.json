@@ -8,6 +8,9 @@
     "lint": "eslint --cache ./src/**/*.ts"
   },
   "devDependencies": {
+    "@altv/types-client": "^1.1.0",
+    "@altv/types-natives": "^1.1.0",
+    "@altv/types-server": "^1.2.0",
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "rollup": "2.0.3",

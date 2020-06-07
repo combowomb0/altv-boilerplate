@@ -1,2 +1,3 @@
-/// <reference types="@altv/types"/>
-/// <reference types="@altv/native-types"/>
+/// <reference types="@altv/types-client"/>
+/// <reference types="@altv/types-server"/>
+/// <reference types="@altv/types-natives"/>

@@ -9,6 +9,7 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
+    "@altv/types-webview": "^1.0.2",
     "@babel/core": "^7.9.0",
     "@storybook/preset-scss": "^1.0.2",
     "@storybook/preset-typescript": "^3.0.0",

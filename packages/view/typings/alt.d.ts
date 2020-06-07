@@ -1,1 +1,1 @@
-/// <reference types="@altv/types/types/altv-client"/>
+/// <reference types="@altv/types-webview"/>

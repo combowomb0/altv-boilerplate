@@ -15,9 +15,6 @@ module.exports = (_, argv) => {
 
   return {
     entry: path.resolve(sourcePath, 'index.tsx'),
-    externals: {
-      'alt-client': 'alt'
-    },
     stats: {
       colors: true
     },
