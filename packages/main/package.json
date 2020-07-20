@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "main:start": "rollup -cw",
+    "start": "rollup -cw",
     "build": "rollup -c",
     "lint": "eslint --cache ./src/**/*.ts"
   },

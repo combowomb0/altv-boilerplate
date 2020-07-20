@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "view:start": "webpack -dw",
+    "start": "webpack -dw",
     "build": "webpack -p",
     "lint": "eslint --cache ./src/**/*.{ts,tsx}",
     "storybook": "start-storybook"
