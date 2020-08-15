@@ -7,11 +7,14 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:promise/recommended'
+    'plugin:promise/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended'
   ],
   plugins: [
     '@typescript-eslint',
-    'promise'
+    'promise',
+    'prettier'
   ],
   parserOptions: {
     project: './tsconfig.json',
@@ -35,14 +38,13 @@ module.exports = {
     'block-spacing': 'error',
     'brace-style': 'error',
     'camelcase': 'error',
-    'comma-dangle': 'error',
     'comma-style': 'error',
     'computed-property-spacing': 'error',
     'eol-last': 'error',
     'implicit-arrow-linebreak': 'error',
     'keyword-spacing': 'error',
     'line-comment-position': 'error',
-    'max-len': ['error', { 'code': 120 }],
+    'max-len': ['error', { 'code': 100 }],
     'max-lines': 'error',
     'no-multiple-empty-lines': ['error', { 'max': 1 }],
     'no-negated-condition': 'error',

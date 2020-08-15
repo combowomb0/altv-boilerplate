@@ -6,6 +6,8 @@
     "start": "webpack -dw",
     "build": "webpack -p",
     "lint": "eslint --cache ./src/**/*.{ts,tsx}",
+    "lint:fix": "eslint --cache ./src/**/*.{ts,tsx} --fix",
+    "prettier": "prettier --write ./src/**/*.{ts,tsx,scss,sass}",
     "storybook": "start-storybook"
   },
   "devDependencies": {

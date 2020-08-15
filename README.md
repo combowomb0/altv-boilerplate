@@ -16,8 +16,10 @@
 - `lerna run main:start` - watch client and server files
 - `lerna run view:start` - watch webView files
 - `lerna run build` - build client, server and webView files
-- `lerna run lint` - ESLint
-- `lerna run storybook` - Storybook
+- `lerna run lint` - [ESLint](https://eslint.org/)
+- `lerna run lint:fix` - [ESLint](https://eslint.org/) with automatically fix problems
+- `lerna run prettier` - [Prettier](https://prettier.io/)
+- `lerna run storybook` - [Storybook](https://storybook.js.org/)
 
 ## Node scripts
 - `yarn watch` - watch resources folder and restart server

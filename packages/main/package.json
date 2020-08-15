@@ -5,7 +5,9 @@
   "scripts": {
     "start": "rollup -cw",
     "build": "rollup -c",
-    "lint": "eslint --cache ./src/**/*.ts"
+    "lint": "eslint --cache ./src/**/*.ts",
+    "lint:fix": "eslint --cache ./src/**/*.ts --fix",
+    "prettier": "prettier --write ./src/**/*.{ts,tsx}"
   },
   "devDependencies": {
     "@altv/types-client": "^1.1.0",

@@ -19,12 +19,15 @@
     "chokidar": "^3.4.0",
     "download": "^8.0.0",
     "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-css-modules": "^2.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
     "lerna": "^3.20.2",
     "node-fetch": "^2.6.0",
+    "prettier": "^2.0.5",
     "typescript": "^3.8.3"
   }
 }
