@@ -21,14 +21,14 @@ module.exports = {
       destination: 'data'
     },
     {
-      linuxUrl: 'http://cdn.altv.mp/node-module/release/x64_linux/libnode.so.72',
-      winUrl: 'http://cdn.altv.mp/node-module/release/x64_win32/libnode.dll',
-      destination: '.'
+      linuxUrl: 'http://cdn.altv.mp/js-module/release/x64_linux/modules/js-module/libnode.so.72',
+      winUrl: 'http://cdn.altv.mp/js-module/release/x64_win32/modules/js-module/libnode.dll',
+      destination: 'modules/js-module'
     },
     {
-      linuxUrl: 'http://cdn.altv.mp/node-module/release/x64_linux/modules/libnode-module.so',
-      winUrl: 'http://cdn.altv.mp/node-module/release/x64_win32/modules/node-module.dll',
-      destination: 'modules'
+      linuxUrl: 'http://cdn.altv.mp/js-module/release/x64_linux/modules/js-module/libjs-module.so',
+      winUrl: 'http://cdn.altv.mp/js-module/release/x64_win32/modules/js-module/js-module.dll',
+      destination: 'modules/js-module'
     },
     {
       linuxUrl: 'https://cdn.altv.mp/others/start.sh',
