@@ -23,8 +23,6 @@ module.exports = {
     'react/no-multi-comp': 'error',
     'react/jsx-no-useless-fragment': 'error',
     'react/jsx-indent-props': ['warn', 2],
-    'react/jsx-max-props-per-line': ['error', { 'when': 'always' }],
-    'react/jsx-first-prop-new-line': ['error', 'multiline'],
     'react/jsx-closing-bracket-location': 'error',
     'react/jsx-indent': ['error', 2],
     'react/prop-types': 'off',
