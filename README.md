@@ -13,8 +13,7 @@
 5. Add `main` to resources in `server.cfg`
 
 ## Commands
-- `lerna run main:start` - watch client and server files
-- `lerna run view:start` - watch webView files
+- `lerna run start` - watch client, server and webView files
 - `lerna run build` - build client, server and webView files
 - `lerna run lint` - [ESLint](https://eslint.org/)
 - `lerna run lint:fix` - [ESLint](https://eslint.org/) with automatically fix problems
