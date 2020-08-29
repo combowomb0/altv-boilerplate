@@ -49,6 +49,10 @@ module.exports = (_, argv) => {
           ].filter(Boolean)
         },
         {
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
+        },
+        {
           test: /\.css$/,
           include: /node_modules/,
           use: [
