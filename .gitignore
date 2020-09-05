@@ -3,6 +3,7 @@
 /data
 /modules
 node_modules
+packages/view/.storybook/build
 resources/main/client
 resources/main/server
 altv-server.exe

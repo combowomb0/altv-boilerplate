@@ -8,7 +8,8 @@
     "lint": "eslint --cache ./src/**/*.{ts,tsx}",
     "lint:fix": "eslint --cache ./src/**/*.{ts,tsx} --fix",
     "prettier": "prettier --write ./src/**/*.{ts,tsx,scss,sass}",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "storybook:build": "build-storybook -o ./.storybook/build"
   },
   "devDependencies": {
     "@altv/types-webview": "^1.0.2",

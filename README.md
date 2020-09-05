@@ -19,6 +19,7 @@
 - `lerna run lint:fix` - [ESLint](https://eslint.org/) with automatically fix problems
 - `lerna run prettier` - [Prettier](https://prettier.io/)
 - `lerna run storybook` - [Storybook](https://storybook.js.org/)
+- `lerna run storybook:build` - build storybook
 
 ## Node scripts
 - `yarn watch` - watch resources folder and restart server
