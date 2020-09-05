@@ -19,7 +19,11 @@ const runServer = () => {
 
 let serverProcess = runServer();
 
-watch(resources).on('all', () => {
+const watchHandler = () => {
   serverProcess.kill();
   serverProcess = runServer();
-});
+};
+
+watch(resources)
+  .on('add', watchHandler)
+  .on('change', watchHandler);
