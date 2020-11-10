@@ -41,10 +41,8 @@ module.exports = {
     'comma-style': 'error',
     'computed-property-spacing': 'error',
     'eol-last': 'error',
-    'implicit-arrow-linebreak': 'error',
     'keyword-spacing': 'error',
     'line-comment-position': 'error',
-    'max-len': ['error', { 'code': 100 }],
     'max-lines': 'error',
     'no-multiple-empty-lines': ['error', { 'max': 1 }],
     'no-negated-condition': 'error',
@@ -54,6 +52,7 @@ module.exports = {
     'semi-style': 'error',
 
     // typescript-eslint
+    '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/ban-ts-comment': 'error',

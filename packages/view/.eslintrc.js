@@ -20,7 +20,6 @@ module.exports = {
     },
   },
   rules: {
-    'react/no-multi-comp': 'error',
     'react/jsx-no-useless-fragment': 'error',
     'react/jsx-indent-props': ['warn', 2],
     'react/jsx-closing-bracket-location': 'error',
