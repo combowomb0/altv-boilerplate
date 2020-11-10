@@ -3,7 +3,7 @@ module.exports = {
     'browser': true
 	},
   extends: [
-    '../../packages/main/.eslintrc.js',
+    '../shared/.eslintrc.js',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:css-modules/recommended'

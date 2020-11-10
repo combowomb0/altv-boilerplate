@@ -1,4 +1,4 @@
-import * as alt from 'alt-server';
+import alt from 'alt-server';
 
 alt.log('server');
 

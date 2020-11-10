@@ -1,0 +1,12 @@
+{
+  "name": "@boilerplate/client",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "start": "rollup -cw",
+    "build": "rollup -c",
+    "lint": "eslint --cache ./src/**/*.ts",
+    "lint:fix": "eslint --cache ./src/**/*.ts --fix",
+    "prettier": "prettier --write ./src/**/*.ts"
+  }
+}

@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import styles from './index.scss';
 
 if ('alt' in window) {
-  window.alt.emit('view:loaded');
+  window.alt.emit('client:someEvent');
 }
 
 export const App: React.FC = () => <h1 className={styles['title']}>boilerplate</h1>;
