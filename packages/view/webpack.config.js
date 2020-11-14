@@ -20,8 +20,8 @@ module.exports = (_, argv) => {
     },
     output: {
       path: outputPath,
-      filename: '[name].[contenthash:8].js',
-      chunkFilename: '[name].[contenthash:8].chunk.js'
+      filename: 'static/js/[name].[contenthash:8].js',
+      chunkFilename: 'static/js/[name].[contenthash:8].chunk.js'
     },
     resolve: {
       extensions: ['.js', '.ts', '.tsx']
@@ -69,7 +69,7 @@ module.exports = (_, argv) => {
               loader: 'css-loader',
               options: {
                 modules: {
-                  localIdentName: '[name]__[local]___[hash:base64:8]'
+                  localIdentName: 'static/css/[name]__[local]___[hash:base64:8]'
                 }
               },
             },
@@ -85,14 +85,14 @@ module.exports = (_, argv) => {
           loader: 'url-loader',
           options: {
             limit: 8192,
-            name: '[name].[contenthash:8].[ext]'
+            name: 'static/[name].[contenthash:8].[ext]'
           }
         },
         {
           exclude: [/\.(js|mjs|jsx|ts|tsx|css|sass|scss)$/, /\.html$/, /\.json$/],
           loader: 'file-loader',
           options: {
-            name: '[name].[contenthash:8].[ext]'
+            name: 'static/[name].[contenthash:8].[ext]'
           }
         }
       ]
@@ -121,8 +121,8 @@ module.exports = (_, argv) => {
         async: !isProduction,
       }),
       new MiniCssExtractPlugin({
-        filename: '[name].[contenthash:8].css',
-        chunkFilename: '[name].[contenthash:8].chunk.css',
+        filename: 'static/css/[name].[contenthash:8].css',
+        chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
       }),
       new HtmlPlugin({ template: path.resolve(process.cwd(), 'public', 'index.html') }),
       new CleanWebpackPlugin()
