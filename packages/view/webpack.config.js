@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const sourcePath = path.resolve(process.cwd(), 'src');
 const rootDir = path.resolve(process.cwd(), '..', '..');
@@ -31,21 +32,14 @@ module.exports = (_, argv) => {
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
-          use: [
-            'ts-loader',
-            {
-              loader: 'eslint-loader',
-              options: {
-                failOnError: isProduction,
-                failOnWarning: isProduction,
-                cache: true,
-              },
-            },
-          ],
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+          }
         },
         {
           test: /\.svg$/,
-          use: ['@svgr/webpack'],
+          loader: '@svgr/webpack',
         },
         {
           test: /\.css$/,
@@ -89,7 +83,7 @@ module.exports = (_, argv) => {
         },
         {
           test: /\.html$/,
-          use: 'html-loader',
+          loader: 'html-loader',
         },
         {
           test: /\.(png|svg|ogg|jpe?g)$/,
@@ -132,6 +126,24 @@ module.exports = (_, argv) => {
       },
     },
     plugins: [
+      new ForkTsCheckerWebpackPlugin({
+        async: false,
+        eslint: {
+          files: './src/**/*.{ts,tsx}',
+          options: {
+            cache: true,
+          },
+        },
+        typescript: {
+          configOverwrite: {
+            compilerOptions: {
+              sourceMap: false,
+              inlineSourceMap: false,
+              declarationMap: false,
+            },
+          },
+        }
+      }),
       new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',

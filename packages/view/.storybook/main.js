@@ -17,10 +17,12 @@ module.exports = {
       name: '@storybook/preset-typescript',
       options: {
         tsLoaderOptions: {
-          configFile: path.resolve(__dirname, '../tsconfig.json'),
+          transpileOnly: true,
+        },
+        forkTsCheckerWebpackPluginOptions: {
+          async: false,
         },
         include: [path.resolve(__dirname, '../src')],
-        transpileManager: true,
       },
     },
   ],
