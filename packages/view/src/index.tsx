@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import styles from './index.scss';
+import styles from './index.module.scss';
 
 if ('alt' in window) {
   window.alt.emit('client:someEvent');

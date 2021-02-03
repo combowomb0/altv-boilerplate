@@ -2,6 +2,7 @@ const path = require('path');
 
 const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -35,7 +36,7 @@ module.exports = (_, argv) => {
             {
               loader: 'eslint-loader',
               options: {
-                failOnError: true,
+                failOnError: isProduction,
                 failOnWarning: isProduction,
                 cache: true,
               },
@@ -48,11 +49,30 @@ module.exports = (_, argv) => {
         },
         {
           test: /\.css$/,
-          include: /node_modules/,
+          exclude: /\.module\.css$/,
           use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader'],
         },
         {
+          test: /\.module\.css$/,
+          use: [
+            { loader: MiniCssExtractPlugin.loader },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: '[name]__[local]___[hash:base64:8]',
+                },
+              },
+            },
+          ],
+        },
+        {
           test: /\.(scss|sass)$/,
+          exclude: /\.module\.(scss|sass)$/,
+          use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader', 'sass-loader'],
+        },
+        {
+          test: /\.module\.(scss|sass)$/,
           exclude: /node_modules/,
           use: [
             { loader: MiniCssExtractPlugin.loader },
@@ -60,7 +80,7 @@ module.exports = (_, argv) => {
               loader: 'css-loader',
               options: {
                 modules: {
-                  localIdentName: 'static/css/[name]__[local]___[hash:base64:8]',
+                  localIdentName: '[name]__[local]___[hash:base64:8]',
                 },
               },
             },
@@ -116,10 +136,11 @@ module.exports = (_, argv) => {
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
       }),
+      isProduction && new OptimizeCssAssetsPlugin(),
       new HtmlPlugin({
         template: path.resolve(process.cwd(), 'public', 'index.html'),
       }),
       new CleanWebpackPlugin(),
-    ],
+    ].filter(Boolean),
   };
 };
