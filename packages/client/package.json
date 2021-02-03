@@ -2,11 +2,33 @@
   "name": "@boilerplate/client",
   "version": "0.0.1",
   "license": "MIT",
+  "author": "combowomb0",
   "scripts": {
-    "start": "rollup -cw",
     "build": "rollup -c",
     "lint": "eslint --cache ./src/**/*.ts",
     "lint:fix": "eslint --cache ./src/**/*.ts --fix",
-    "prettier": "prettier --write ./src/**/*.ts"
+    "prettier": "prettier --write ./src/**/*.ts",
+    "start": "rollup -cw"
+  },
+  "devDependencies": {
+    "@altv/types-client": "^1.1.0",
+    "@altv/types-natives": "^1.1.0",
+    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@types/node": "^13.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-css-modules": "^2.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "prettier": "^2.0.5",
+    "rollup": "2.0.3",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "typescript": "^3.8.3"
   }
 }
