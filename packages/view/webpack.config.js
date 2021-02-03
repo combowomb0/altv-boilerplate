@@ -3,7 +3,6 @@ const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const sourcePath = path.resolve(process.cwd(), 'src');
@@ -16,15 +15,15 @@ module.exports = (_, argv) => {
   return {
     entry: path.resolve(sourcePath, 'index.tsx'),
     stats: {
-      colors: true
+      colors: true,
     },
     output: {
       path: outputPath,
       filename: 'static/js/[name].[contenthash:8].js',
-      chunkFilename: 'static/js/[name].[contenthash:8].chunk.js'
+      chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
     },
     resolve: {
-      extensions: ['.js', '.ts', '.tsx']
+      extensions: ['.js', '.ts', '.tsx'],
     },
     module: {
       rules: [
@@ -32,21 +31,16 @@ module.exports = (_, argv) => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: [
-            {
-              loader: 'ts-loader',
-              options: {
-                transpileOnly: true,
-              }
-            },
+            'ts-loader',
             {
               loader: 'eslint-loader',
               options: {
                 failOnError: true,
                 failOnWarning: isProduction,
                 cache: true,
-              }
+              },
             },
-          ].filter(Boolean)
+          ],
         },
         {
           test: /\.svg$/,
@@ -55,10 +49,7 @@ module.exports = (_, argv) => {
         {
           test: /\.css$/,
           include: /node_modules/,
-          use: [
-            { loader: MiniCssExtractPlugin.loader },
-            'css-loader'
-          ]
+          use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader'],
         },
         {
           test: /\.(scss|sass)$/,
@@ -69,33 +60,37 @@ module.exports = (_, argv) => {
               loader: 'css-loader',
               options: {
                 modules: {
-                  localIdentName: 'static/css/[name]__[local]___[hash:base64:8]'
-                }
+                  localIdentName: 'static/css/[name]__[local]___[hash:base64:8]',
+                },
               },
             },
-            'sass-loader'
-          ]
+            'sass-loader',
+          ],
         },
         {
           test: /\.html$/,
-          use: 'html-loader'
+          use: 'html-loader',
         },
         {
           test: /\.(png|svg|ogg|jpe?g)$/,
           loader: 'url-loader',
           options: {
             limit: 8192,
-            name: 'static/[name].[contenthash:8].[ext]'
-          }
+            name: 'static/[name].[contenthash:8].[ext]',
+          },
         },
         {
-          exclude: [/\.(js|mjs|jsx|ts|tsx|css|sass|scss)$/, /\.html$/, /\.json$/],
+          exclude: [
+            /\.(js|mjs|jsx|ts|tsx|css|sass|scss)$/,
+            /\.html$/,
+            /\.json$/,
+          ],
           loader: 'file-loader',
           options: {
-            name: 'static/[name].[contenthash:8].[ext]'
-          }
-        }
-      ]
+            name: 'static/[name].[contenthash:8].[ext]',
+          },
+        },
+      ],
     },
     optimization: {
       minimize: isProduction,
@@ -105,27 +100,26 @@ module.exports = (_, argv) => {
             condition: 'all',
             // delete all comments
             filename: () => '',
-          }
-        })
+          },
+        }),
       ].filter(Boolean),
       splitChunks: {
         chunks: 'all',
         name: false,
       },
       runtimeChunk: {
-        name: entrypoint => `runtime-${entrypoint.name}`,
+        name: (entrypoint) => `runtime-${entrypoint.name}`,
       },
     },
     plugins: [
-      new ForkTsCheckerPlugin({
-        async: !isProduction,
-      }),
       new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
       }),
-      new HtmlPlugin({ template: path.resolve(process.cwd(), 'public', 'index.html') }),
-      new CleanWebpackPlugin()
-    ]
-  }
+      new HtmlPlugin({
+        template: path.resolve(process.cwd(), 'public', 'index.html'),
+      }),
+      new CleanWebpackPlugin(),
+    ],
+  };
 };
