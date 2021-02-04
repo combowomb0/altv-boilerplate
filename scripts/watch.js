@@ -1,29 +1,45 @@
 const path = require('path');
-const { watch } = require('chokidar');
-const { existsSync } = require('fs');
-const { red } = require('chalk');
-const { spawn } = require('child_process');
+const chokidar = require('chokidar');
+const fs = require('fs');
+const childProcess = require('child_process');
 
-const isWindows = process.platform === 'win32';
-const getExec = isWindows ? 'altv-server.exe' : 'start.sh';
-const pathToExec = path.resolve(process.cwd(), getExec);
-const resources = path.resolve(process.cwd(), 'resources');
+class Watcher {
+  constructor() {
+    const exec = process.platform === 'win32' ? 'altv-server.exe' : 'start.sh';
+    const resourcesFolder = path.resolve(process.cwd(), 'resources');
+    this.pathToServer = path.resolve(process.cwd(), exec);
+    this.runServer();
 
-const runServer = () => {
-  if (!existsSync(pathToExec)) {
-    throw new Error(red(`${getExec} not found`));
+    const instance = chokidar.watch(resourcesFolder, { interval: 1000 });
+
+    instance.on('ready', () => {
+      instance
+        .on('add', this.restartServer)
+        .on('change', this.restartServer);
+    });
   }
 
-  return spawn(pathToExec, { stdio: 'inherit' });
-};
+  runServer = () => {
+    if (!fs.existsSync(this.pathToServer)) {
+      throw new Error(`${this.pathToServer} not found`);
+    }
 
-let serverProcess = runServer();
+    this.process = childProcess.spawn(this.pathToServer, { stdio: 'inherit' });
+  };
 
-const watchHandler = () => {
-  serverProcess.kill();
-  serverProcess = runServer();
-};
+  restartServer = () => {
+    if (this.process) {
+      this.process.kill('SIGKILL');
 
-watch(resources)
-  .on('add', watchHandler)
-  .on('change', watchHandler);
+      this.process.on('close', () => {
+        this.process.removeAllListeners();
+        this.process = undefined;
+        this.runServer();
+      });
+    } else {
+      this.runServer();
+    }
+  };
+}
+
+new Watcher();

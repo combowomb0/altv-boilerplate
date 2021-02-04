@@ -23,4 +23,3 @@
 
 ## Node scripts
 - `yarn watch` - watch resources folder and restart server
-- `yarn update:release` - update server files from the release branch

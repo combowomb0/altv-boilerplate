@@ -8,14 +8,10 @@
     "packages/*"
   ],
   "scripts": {
-    "update:release": "node scripts/update.js",
     "watch": "node scripts/watch.js"
   },
   "devDependencies": {
-    "chalk": "^4.0.0",
     "chokidar": "^3.4.0",
-    "download": "^8.0.0",
-    "lerna": "^3.20.2",
-    "node-fetch": "^2.6.0"
+    "lerna": "^3.20.2"
   }
 }
