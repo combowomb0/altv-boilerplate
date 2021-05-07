@@ -10,7 +10,14 @@
 4. Open cmd/bash in boilerplate directory and type:
     - `yarn`
     - `yarn build`
-5. Add `core` to resources in `server.cfg`
+5. Add `core` and `core-assets-view` to resources in `server.cfg`
+
+```
+resources: [
+  core,
+  core-assets-view,
+]
+```
 
 ## Commands
 - `yarn start` - watch client, server and webView files

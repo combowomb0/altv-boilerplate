@@ -9,7 +9,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const sourcePath = path.resolve(process.cwd(), 'src');
 const rootDir = path.resolve(process.cwd(), '..', '..');
-const outputPath = path.resolve(rootDir, 'resources', 'core', 'client', 'view');
+const outputPath = path.resolve(rootDir, 'resources', 'core-assets-view', 'build');
 
 module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';

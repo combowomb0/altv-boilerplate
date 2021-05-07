@@ -6,6 +6,7 @@ node_modules
 packages/view/.storybook/build
 resources/core/client
 resources/core/server
+resources/core-assets-view/build
 altv-server.exe
 libnode.dll
 server.cfg
