@@ -1,6 +1,6 @@
 module.exports = {
   extends: [
-    '../shared/.eslintrc.js',
+    '../../.eslintrc.cjs',
   ],
   parserOptions: {
     tsconfigRootDir: __dirname,

@@ -4,8 +4,8 @@
 /modules
 node_modules
 packages/view/.storybook/build
-resources/main/client
-resources/main/server
+resources/core/client
+resources/core/server
 altv-server.exe
 libnode.dll
 server.cfg

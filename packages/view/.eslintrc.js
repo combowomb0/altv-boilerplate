@@ -1,22 +1,22 @@
 module.exports = {
   env: {
-    'browser': true
+    'browser': true,
 	},
   extends: [
-    '../shared/.eslintrc.js',
+    '../../.eslintrc.cjs',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:css-modules/recommended'
+    'plugin:css-modules/recommended',
   ],
   plugins: [
     'react',
     'react-hooks',
-    'css-modules'
+    'css-modules',
   ],
   parserOptions: {
     tsconfigRootDir: __dirname,
     ecmaFeatures: {
-      jsx:  true,
+      jsx: true,
     },
   },
   rules: {
@@ -45,11 +45,11 @@ module.exports = {
     'react/jsx-fragments': 'warn',
     'react/jsx-equals-spacing': 'warn',
     'react/jsx-curly-spacing': 'warn',
-    'react/jsx-closing-tag-location': 'warn'
+    'react/jsx-closing-tag-location': 'warn',
   },
   settings: {
     react: {
-      version: 'detect'
-    }
-  }
+      version: 'detect',
+    },
+  },
 };

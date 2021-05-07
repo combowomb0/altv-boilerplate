@@ -9,20 +9,19 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const sourcePath = path.resolve(process.cwd(), 'src');
 const rootDir = path.resolve(process.cwd(), '..', '..');
-const outputPath = path.resolve(rootDir, 'resources', 'main', 'client', 'view');
+const outputPath = path.resolve(rootDir, 'resources', 'core', 'client', 'view');
 
 module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
     entry: path.resolve(sourcePath, 'index.tsx'),
-    stats: {
-      colors: true,
-    },
+    performance: { hints: false },
+    stats: { colors: true },
     output: {
       path: outputPath,
-      filename: 'static/js/[name].[contenthash:8].js',
-      chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
+      filename: isProduction ? 'static/js/[name].[contenthash:8].js' : 'bundle.js',
+      chunkFilename: isProduction ? 'static/js/[name].[contenthash:8].chunk.js' : '[name].chunk.js',
     },
     resolve: {
       extensions: ['.js', '.ts', '.tsx'],
@@ -32,10 +31,19 @@ module.exports = (_, argv) => {
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true,
-          }
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                cacheDirectory: true,
+                presets: ['@babel/preset-react'],
+              },
+            },
+            {
+              loader: 'ts-loader',
+              options: { transpileOnly: true },
+            },
+          ]
         },
         {
           test: /\.svg$/,
@@ -73,9 +81,7 @@ module.exports = (_, argv) => {
             {
               loader: 'css-loader',
               options: {
-                modules: {
-                  localIdentName: '[name]__[local]___[hash:base64:8]',
-                },
+                modules: { localIdentName: '[name]__[local]___[hash:base64:8]' },
               },
             },
             'sass-loader',
@@ -90,7 +96,7 @@ module.exports = (_, argv) => {
           loader: 'url-loader',
           options: {
             limit: 8192,
-            name: 'static/[name].[contenthash:8].[ext]',
+            name: 'static/[name].[hash:8].[ext]',
           },
         },
         {
@@ -100,9 +106,7 @@ module.exports = (_, argv) => {
             /\.json$/,
           ],
           loader: 'file-loader',
-          options: {
-            name: 'static/[name].[contenthash:8].[ext]',
-          },
+          options: { name: 'static/[name].[hash:8].[ext]' },
         },
       ],
     },
@@ -112,7 +116,7 @@ module.exports = (_, argv) => {
         isProduction && new TerserPlugin({
           extractComments: {
             condition: 'all',
-            // delete all comments
+            // delete all comments from bundle
             filename: () => '',
           },
         }),

@@ -5,6 +5,8 @@
 		"module": "esnext",
 		"moduleResolution": "node",
     "target": "esnext",
+    "strict": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
   "include": [

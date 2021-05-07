@@ -1,13 +1,18 @@
 {
   "name": "boilerplate",
-  "version": "0.0.1",
   "private": true,
   "license": "MIT",
   "author": "combowomb0",
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
+    "build": "lerna run build --stream",
+    "lint": "lerna run lint --stream",
+    "lint:fix": "lerna run lint:fix --stream",
+    "prettier": "lerna run prettier --stream",
+    "start": "lerna run start --stream",
     "watch": "node scripts/watch.js"
   },
   "devDependencies": {
