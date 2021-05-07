@@ -9,15 +9,15 @@
 3. Download alt:V server files [here](https://altv.mp/#/downloads) and extract them into boilerplate folder
 4. Open cmd/bash in boilerplate directory and type:
     - `yarn`
-    - `lerna run build`
-5. Add `main` to resources in `server.cfg`
+    - `yarn build`
+5. Add `core` to resources in `server.cfg`
 
 ## Commands
-- `lerna run start` - watch client, server and webView files
-- `lerna run build` - build client, server and webView files
-- `lerna run lint` - [ESLint](https://eslint.org/)
-- `lerna run lint:fix` - [ESLint](https://eslint.org/) with automatically fix problems
-- `lerna run prettier` - [Prettier](https://prettier.io/)
+- `yarn start` - watch client, server and webView files
+- `yarn build` - build client, server and webView files
+- `yarn lint` - [ESLint](https://eslint.org/)
+- `yarn lint:fix` - [ESLint](https://eslint.org/) with `--fix` option
+- `yarn prettier` - [Prettier](https://prettier.io/)
 - `lerna run storybook` - [Storybook](https://storybook.js.org/)
 - `lerna run storybook:build` - build storybook
 
