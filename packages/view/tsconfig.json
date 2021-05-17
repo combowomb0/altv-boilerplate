@@ -24,8 +24,5 @@
   "include": [
     "src",
     "typings"
-  ],
-  "exclude": [
-    "src/__mocks__"
   ]
 }

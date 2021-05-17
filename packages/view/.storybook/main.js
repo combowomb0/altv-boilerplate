@@ -1,28 +1,24 @@
-const path = require('path');
-
 module.exports = {
-  stories: ['../src/**/*.stories.tsx'],
+  stories: [
+    '../src/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
+  webpackFinal: async (config) => {
+    config.module.rules.unshift({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  },
   addons: [
     {
       name: '@storybook/preset-scss',
       options: {
         cssLoaderOptions: {
           modules: {
-            localIdentName: '[name]__[local]___[hash:base64:8]'
-          }
-        }
-      }
-    },
-    {
-      name: '@storybook/preset-typescript',
-      options: {
-        tsLoaderOptions: {
-          transpileOnly: true,
+            localIdentName: '[name]__[local]___[hash:base64:8]',
+          },
         },
-        forkTsCheckerWebpackPluginOptions: {
-          async: false,
-        },
-        include: [path.resolve(__dirname, '../src')],
       },
     },
   ],
