@@ -24,13 +24,13 @@ module.exports = (_, argv) => {
       chunkFilename: isProduction ? 'static/js/[name].[contenthash:8].chunk.js' : '[name].chunk.js',
     },
     resolve: {
-      extensions: ['.js', '.ts', '.tsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     module: {
       rules: [
         {
           test: /\.tsx?$/,
-          exclude: /node_modules/,
+          exclude: [/node_modules/, /\.stories\.(js|jsx|ts|tsx)$/],
           use: [
             {
               loader: 'babel-loader',
@@ -132,8 +132,13 @@ module.exports = (_, argv) => {
     plugins: [
       new ForkTsCheckerWebpackPlugin({
         async: false,
+        issue: {
+          exclude: [
+            { file: '**/*.stories.*' },
+          ],
+        },
         eslint: {
-          files: './src/**/*.{ts,tsx}',
+          files: './src/**/*.{js,jsx,ts,tsx}',
           options: {
             cache: true,
           },

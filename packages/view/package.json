@@ -13,8 +13,8 @@
     "storybook:build": "build-storybook -o ./.storybook/build"
   },
   "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@altv/types-webview": "^1.0.2",
@@ -23,8 +23,8 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.2.9",
     "@svgr/webpack": "^5.4.0",
-    "@types/react": "^16.9.17",
-    "@types/react-dom": "^16.9.4",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.5",
     "@types/webpack": "^4.41.0",
     "@types/webpack-env": "^1.15.1",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
